@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player - TechLearnHub</title>
+
+    <!-- Link to CSS files -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="video-player.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="goBackToCourse()">
+                    <svg class="w-8 h-8 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                        </path>
+                    </svg>
+                    <span class="text-2xl font-bold text-gray-800">TechLearnHub</span>
+                </div>
+
+                <!-- Back Button -->
+                <button onclick="goBackToCourse()" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Back to Course
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-20">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Video Player Section (Left Side) -->
+                <div class="lg:col-span-2">
+                    <!-- Video Player -->
+                    <div class="bg-black rounded-lg overflow-hidden mb-6">
+                        <!-- YouTube iframe (hidden by default) -->
+                        <iframe id="video-frame" width="100%" height="500" src="" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            style="display: none;">
+                        </iframe>
+                        
+                        <!-- HTML5 Video Player (for direct video files) -->
+                        <video id="video-player" width="100%" height="500" controls controlsList="nodownload"
+                            style="display: none; background: black;">
+                            <source id="video-source" src="" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <!-- Lesson Info -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                        <h1 id="lesson-title" class="text-3xl font-bold text-gray-900 mb-4">Lesson Title</h1>
+                        <p id="lesson-description" class="text-gray-600 mb-4">Lesson description goes here...</p>
+                        
+                        <div class="flex items-center gap-4">
+                            <span id="lesson-duration" class="text-gray-500">Duration: 10:30</span>
+                            <span class="text-gray-300">|</span>
+                            <span id="lesson-number" class="text-gray-500">Lesson 1</span>
+                        </div>
+                    </div>
+
+                    <!-- Mark as Complete Button -->
+                    <button id="complete-btn" onclick="markLessonComplete()" 
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg mb-6">
+                        Mark as Complete
+                    </button>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex gap-4">
+                        <button id="prev-btn" onclick="goToPreviousLesson()" 
+                            class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 rounded-lg">
+                            ← Previous Lesson
+                        </button>
+                        <button id="next-btn" onclick="goToNextLesson()" 
+                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg">
+                            Next Lesson →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lessons List (Right Side) -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Course Lessons</h2>
+                        <div id="lessons-sidebar" class="space-y-2 max-h-96 overflow-y-auto">
+                            <!-- Lessons will be added here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="quiz-modal" style="display: none;">
+        <div class="quiz-content">
+            <h2 class="text-3xl font-bold mb-6 text-gray-900">Lesson Quiz</h2>
+            <div id="quiz-question-container">
+                <p class="text-lg mb-4 text-gray-700" id="quiz-question">Question will appear here</p>
+                <div id="quiz-options" class="space-y-3">
+                    <!-- Options will be added here -->
+                </div>
+            </div>
+            <div id="quiz-result" class="hidden">
+                <div class="text-center py-8">
+                    <div id="quiz-score" class="text-5xl font-bold mb-4"></div>
+                    <p class="text-xl text-gray-700 mb-6" id="quiz-message"></p>
+                    <button onclick="closeQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold">
+                        Continue Learning
+                    </button>
+                </div>
+            </div>
+            <div class="flex justify-between mt-6" id="quiz-navigation">
+                <button onclick="closeQuiz()" class="text-gray-600 hover:text-gray-800 font-semibold">
+                    Skip Quiz
+                </button>
+                <button id="quiz-submit-btn" onclick="submitQuizAnswer()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold">
+                    Submit Answer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="video-player.js"></script>
+</body>
+
+</html>

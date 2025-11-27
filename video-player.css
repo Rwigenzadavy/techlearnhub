@@ -1,0 +1,114 @@
+/* ========================================
+   VIDEO PLAYER PAGE STYLES
+   ======================================== */
+
+/* Video container */
+#video-frame {
+    aspect-ratio: 16 / 9;
+    min-height: 400px;
+}
+
+/* Lesson item in sidebar */
+.sidebar-lesson {
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-lesson:hover {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+/* Active lesson (currently playing) */
+.sidebar-lesson.active {
+    border-color: #3b82f6;
+    background-color: #dbeafe;
+}
+
+/* Completed lesson */
+.sidebar-lesson.completed {
+    background-color: #f0fdf4;
+}
+
+.sidebar-lesson.completed .lesson-number {
+    background-color: #22c55e;
+    color: white;
+}
+
+/* Lesson number circle */
+.lesson-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.sidebar-lesson.active .lesson-number {
+    background-color: #3b82f6;
+    color: white;
+}
+
+/* Lesson info in sidebar */
+.lesson-info {
+    flex: 1;
+}
+
+.lesson-info h3 {
+    font-weight: 600;
+    color: #111827;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.lesson-info p {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* Checkmark icon for completed lessons */
+.checkmark {
+    width: 20px;
+    height: 20px;
+    color: #22c55e;
+}
+
+/* Disabled button */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    background-color: inherit;
+}
+
+/* Scrollbar for lessons list */
+#lessons-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#lessons-sidebar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+#lessons-sidebar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+#lessons-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
