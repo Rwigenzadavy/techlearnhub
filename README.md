@@ -4,7 +4,6 @@ TechLearnHub is an e-learning platform that will help people to be able to get d
 
 
 ## Features
-
 - User Authentication (Sign up/Sign in)
 - Course Management
 - Video Lessons (Supabase Storage + YouTube support)
@@ -33,7 +32,6 @@ TechLearnHub is an e-learning platform that will help people to be able to get d
 - A text editor (VS Code, Sublime Text, etc.)
 
 ---
-
 
 
 ## Testing the Application
@@ -242,7 +240,6 @@ To add more courses and lessons:
    VALUES (7, 'Lesson Title', '15:00', 'VIDEO_URL', 'Description', 1);
    ```
 
-
 ## Support
 
 If you encounter any issues:
@@ -251,26 +248,22 @@ If you encounter any issues:
 2. Open an issue on GitHub
 3. Check Supabase documentation: [supabase.com/docs](https://supabase.com/docs)
 
----
 
 ## Credits
 
-Built with ❤️ using:
+Built with This using:
 - [Supabase](https://supabase.com)
 - [Tailwind CSS](https://tailwindcss.com)
 
----
 
 ## Roadmap
-
 Future features to add:
 - [ ] User profile editing
 - [ ] Course categories
 - [ ] Search functionality enhancement
 - [ ] Discussion forums
 - [ ] Live classes
-- [ ] Mobile app
-- [ ] Payment integration
 - [ ] Instructor dashboard
 - [ ] Course creation interface
 - [ ] Advanced analytics
+
