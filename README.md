@@ -1,6 +1,7 @@
 # TechLearnHub - Online Learning Platform
 
-A modern, interactive online learning platform built with vanilla JavaScript and Supabase. Students can browse courses, watch video lessons, track progress, and earn certificates.
+TechLearnHub is an e-learning platform that will help people to be able to get digital skills online everywhere for free. This will help people to get skills from beginner level to advanced level. It’s easy to use and also user friendly.Students can browse courses, watch video lessons, track progress, and earn certificates.
+
 
 ## Features
 
@@ -21,13 +22,11 @@ A modern, interactive online learning platform built with vanilla JavaScript and
 - **Backend:** Supabase (PostgreSQL)
 - **Authentication:** Supabase Auth
 - **Storage:** Supabase Storage
-- **Hosting:** Vercel
+- **Deployment:** Vercel
 
 ---
 
 ## Prerequisites
-
-Before you begin, make sure you have:
 
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 - A [Supabase](https://supabase.com) account (free tier works)
@@ -82,7 +81,7 @@ Before you begin, make sure you have:
 techlearnhub/
 ├── index.html              # Main homepage
 ├── video-player.html       # Video player page
-├── video-player.js         # Video player logic
+├── video-player.js         # Video player function
 ├── styles.css              # Main styles
 ├── video-player.css        # Video player styles
 ├── js/
@@ -93,7 +92,7 @@ techlearnhub/
 │   ├── enrollments.js     # Enrollment handling
 │   ├── reviews.js         # Review system
 │   ├── progress.js        # Progress tracking
-│   ├── dashboard.js       # Dashboard functionality
+│   ├── dashboard.js       # Dashboard functions
 │   ├── navigation.js      # Page navigation
 │   ├── storage.js         # LocalStorage utilities
 │   └── main.js            # App initialization
@@ -209,14 +208,6 @@ techlearnhub/
 
 ## Deployment
 
-### Deploy to Netlify
-
-1. Push your code to GitHub
-2. Go to [netlify.com](https://netlify.com)
-3. Click "Add new site" → "Import an existing project"
-4. Connect to GitHub and select your repository
-5. Click "Deploy site"
-
 ### Deploy to Vercel
 
 1. Push your code to GitHub
@@ -251,19 +242,6 @@ To add more courses and lessons:
    VALUES (7, 'Lesson Title', '15:00', 'VIDEO_URL', 'Description', 1);
    ```
 
----
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
 
 ## Support
 
@@ -280,7 +258,6 @@ If you encounter any issues:
 Built with ❤️ using:
 - [Supabase](https://supabase.com)
 - [Tailwind CSS](https://tailwindcss.com)
-- Vanilla JavaScript
 
 ---
 
@@ -297,7 +274,3 @@ Future features to add:
 - [ ] Instructor dashboard
 - [ ] Course creation interface
 - [ ] Advanced analytics
-
----
-
-**Happy Learning! 🎓**
